@@ -1,4 +1,5 @@
 <script>
+  import { base } from '$app/paths';
 	import { data } from '$store';
   import { goto } from '$app/navigation';
   import institutos from '$data/institutos.json'
@@ -10,7 +11,7 @@
 
   $: { $data.picture = image }
   
-  const handleSave = () => { goto('/') };
+  const handleSave = () => { goto(`${base}/`) };
   const removePicture = () => { 
     $data.picture = ''
     image = $data.picture || defaultProfilePicture 
