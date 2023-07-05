@@ -5,7 +5,7 @@
   export let multiple = false
   export let accept = '*'
   export let capture = false
-  
+
   let input: HTMLInputElement | undefined
 
   onMount(() => {

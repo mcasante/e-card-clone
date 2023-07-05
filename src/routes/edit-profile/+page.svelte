@@ -8,12 +8,12 @@
 
   let image = $data.picture || defaultProfilePicture
 
-  $: {
-    $data.picture = image
-  }
+  $: { $data.picture = image }
   
-  const handleSave = () => {
-    goto('/')
+  const handleSave = () => { goto('/') };
+  const removePicture = () => { 
+    $data.picture = ''
+    image = $data.picture || defaultProfilePicture 
   };
   
 </script>
@@ -27,7 +27,12 @@
       src={image}
       alt="Current Profile"
     >
-    <UploadFile bind:image={image} />
+    <div class="flex nowrap gap-2">
+      {#if image !== defaultProfilePicture}
+        <button class="!w-20" on:click={removePicture}>X</button>
+      {/if}
+      <UploadFile bind:image={image} />
+    </div>
   </div>
   <div>
     <input type="text" bind:value={$data.name} placeholder="Nome">
